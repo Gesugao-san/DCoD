@@ -61,6 +61,7 @@ for (const file of commandFiles) {
 
 process.on('SIGINT', function() {
 	console.log("Caught interrupt signal."); //"Medical examination: Killed by сaughted interrupt signal."
+	client.user.setStatus("invisible");
 	process.exit();
 });
 
