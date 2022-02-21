@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.27.2",
+    "discord.js": "^13.6.0"
+  },
+  "name": "digital-cartographer",
+  "description": "Digital cartographer of Discord servers.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SS13HUB/digital-cartographer.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SS13HUB/digital-cartographer/issues"
+  },
+  "homepage": "https://github.com/SS13HUB/digital-cartographer#readme"
+}
