@@ -56,7 +56,7 @@ class WebSocket {
 	 */
 	registerRoots() {
 		this.app.get('/', (req, res) => {
-			var _token = req.query.token
+			var _token = req.query.token;
 			if (!this.checkToken(_token)) {
 				// Render error view if token does not pass
 				res.render('error', { title: "ERROR" })
@@ -65,12 +65,16 @@ class WebSocket {
 
 			// Collect all text channels and put them into an
 			// array as object { id, name }
-			var chans = []
+			var chans = [];
+			console.log("channels searched...");
 			this.client.guilds.cache //this.client.guilds.first().channels
-				.filter(c => c.type == 'text')
-				.forEach(c => {
-					chans.push({id: c.id, name: c.name})
-				})
+				.filter((c) => c.type == 'text')
+				//.find((c) => c.name === "welcome")
+				.forEach((c) => {
+					console.log(c.name);
+					chans.push({id: c.id, name: c.name});
+				});
+				chans.push({id: this.client.channels.cache.get("878637723848699944").id, name: this.client.channels.cache.get("878637723848699944").name})
 				/* client.guilds.cache
 					.forEach((guild) => {
 					console.log(guild.name);
@@ -96,7 +100,8 @@ class WebSocket {
 			if (!this.checkToken(_token))
 				return res.sendStatus(401)
 
-			var chan = this.client.guilds.first().channels.get(channelid)
+			//var chan = this.client.guilds.first().channels.get(channelid)
+			var chan = this.client.channels.cache.get(channelid);
 
 			// catch post request and if token passes,
 			// send message into selected channel
