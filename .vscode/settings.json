@@ -8,14 +8,16 @@
 	"files.trimFinalNewlines": false,
 	"files.trimTrailingWhitespace": true,
 	"files.exclude": {
-		"**/.classpath": true,
-		"**/.DS_Store": true,
-		"**/.factorypath": true,
 		"**/.git": true,
+		"**/.svn": true,
 		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/.classpath": true,
 		"**/.project": true,
 		"**/.settings": true,
-		"**/.svn": true,
-		"**/CVS": true,
+		"**/.factorypath": true
 	},
+	"explorerExclude.backup": null,
 }

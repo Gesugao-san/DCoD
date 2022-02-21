@@ -14,7 +14,7 @@ const client = new Client({
 });
 //client.removeAllListeners();
 
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+/* const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
@@ -23,7 +23,12 @@ for (const file of eventFiles) {
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
-}
+} */
+
+fs.readdir("./events/", (err, files) => {
+	const eventHandler = require("./handler/eventHandler");
+	eventHandler(err, files, client);
+});
 
 // When the client is ready, run this code (only once)
 /* client.once('ready', () => {
