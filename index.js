@@ -1,6 +1,6 @@
 
-// 1: node index.js --trace-deprecation
-// 2: node .\deploy-commands.js
+// 1: node ".\index.js" --trace-deprecation
+// 2: node "".\deploy-commands.js"
 // https://discordjs.guide/creating-your-bot/, https://github.com/FiredragonPlayz/discord.js-tutorials
 
 // Require the necessary discord.js classes
@@ -12,11 +12,23 @@ const cfg = require("./config.json");
 const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
+//client.removeAllListeners();
+
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 
 // When the client is ready, run this code (only once)
-client.once('ready', () => {
+/* client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-});
+}); */
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -28,8 +40,9 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-client.on('interactionCreate', async interaction => {
+/* client.on('interactionCreate', async interaction => {
 	const command = client.commands.get(interaction.commandName);
+	console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 
 	if (!command) return;
 
@@ -39,7 +52,7 @@ client.on('interactionCreate', async interaction => {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
-});
+}); */
 
 process.on('SIGINT', function() {
 	console.log("Caught interrupt signal."); //"Medical examination: Killed by сaughted interrupt signal."

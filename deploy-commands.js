@@ -1,5 +1,5 @@
 
-// node .\deploy-commands.js
+// node ".\deploy-commands.js"
 
 const fs = require('fs');
 const { SlashCommandBuilder } = require('@discordjs/builders');
