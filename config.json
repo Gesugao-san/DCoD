@@ -1,6 +1,8 @@
 {
-	"prefix": "!",
-	"clientId": "878585806258855937",
-	"guildId": "854664216739577867",
-	"token": "insert_bot_token_here"
+	"token": "secret",
+	"ws": {
+		"port": 5665,
+		"token": "123456"
+	},
+	"guildId": "854664216739577867"
 }

@@ -59,7 +59,7 @@ client.on('interactionCreate', async interaction => {
 			const tag = await Tags.create({
 				name: tagName,
 				description: tagDescription,
-				username: interaction.user.username,
+				username: interaction.user.id,
 			});
 
 			return interaction.reply(`Tag ${tag.name} added.`);
