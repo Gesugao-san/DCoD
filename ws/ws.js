@@ -33,7 +33,7 @@ class WebSocket {
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 		this.app.use(bodyParser.json());
 
-		this.registerRoots();
+		this.registerRoots(client);
 
 		// Start websocket on port defined in constructors arguments
 		this.server = this.app.listen(port, () => {
@@ -54,7 +54,7 @@ class WebSocket {
 	/**
 	 * Register root pathes
 	 */
-	registerRoots() {
+	registerRoots(client) {
 		this.app.get('/', (req, res) => {
 			var _token = req.query.token;
 			if (!this.checkToken(_token)) {
@@ -68,17 +68,25 @@ class WebSocket {
 			var chans = [];
 			console.log("channels searched...");
 			this.client.guilds.cache //this.client.guilds.first().channels
-				.filter((c) => c.type == 'text')
-				//.find((c) => c.name === "welcome")
+				.filter((c) => c.type === 'text') // && c.topic === 'volturnbot')
+				//.array()
 				.forEach((c) => {
 					console.log(c.name);
 					chans.push({id: c.id, name: c.name});
 				});
-				chans.push({id: this.client.channels.cache.get("878637723848699944").id, name: this.client.channels.cache.get("878637723848699944").name});
+				chans.push({
+					//id: this.client.channels.cache.get("878637723848699944").id,
+					//id: this.guilds.get(client.config.guildId).id,
+					id: this.client.guilds.cache.map(guild => guild.id),
+					//name: this.client.channels.cache.get("878637723848699944").name
+					//name: this.guilds.get(client.config.guildId).name
+					name: this.client.guilds.cache.map(guild => guild.name)
+				});
 				/* client.guilds.cache
 					.forEach((guild) => {
 					console.log(guild.name);
 				}); */
+				console.log(chans);
 
 			// Render index view and pass title, token
 			// and channels array

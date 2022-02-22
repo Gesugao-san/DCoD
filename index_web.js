@@ -15,9 +15,10 @@ const config = require('./config_web.json');
 
 // Create Discord Bot Client
 //var client = new Client();
-const client = new Client({
-	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
-});
+const client = new Client({intents: [
+	Intents.FLAGS.GUILDS,
+	Intents.FLAGS.GUILD_MESSAGES
+]});
 // inject config into client instance object
 client.config = config;
 
