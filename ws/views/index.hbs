@@ -11,12 +11,14 @@
 			<th>Icon</th>
 			<th>ID</th>
 			<th>Name</th>
+			{{!-- <th>Try to enter</th> --}}
 		</tr>
 		{{#each chans}}
 		<tr id="{{this.id}}">
-			<td><img src="{{this.icon}}" alt="" style="border: inset;"></td>
+			<td><img src="{{this.icon}}" alt="{{this.id}}_icon" style="border: inset;"></td>
 			<td>{{this.id}}</td>
 			<td>"{{this.name}}"</td>
+			{{!-- <td><a href="https://discord.com/widget?id={{this.id}}&theme=dark">Enter</a></td> --}} {{!-- ToDo: check to 0 online and 403 in console + Database --}}
 		</tr>
 		{{/each}}
 	</table>

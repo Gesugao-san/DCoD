@@ -7,7 +7,9 @@
     "discord.js": "^13.6.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.16.2",
+    "sqlite3": "^5.0.2"
   },
   "name": "digital-cartographer",
   "description": "Digital cartographer of Discord servers.",
@@ -27,7 +29,10 @@
   },
   "homepage": "https://github.com/SS13HUB/digital-cartographer#readme",
   "nodemonConfig": {
-    "ignore": ["test/*", "docs/*"],
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
     "delay": 2500
   }
 }
