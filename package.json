@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/SS13HUB/digital-cartographer/issues"
   },
-  "homepage": "https://github.com/SS13HUB/digital-cartographer#readme"
+  "homepage": "https://github.com/SS13HUB/digital-cartographer#readme",
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*"],
+    "delay": 2500
+  }
 }

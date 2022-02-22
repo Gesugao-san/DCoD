@@ -1,5 +1,5 @@
 
-// 1: node ".\index.js" --trace-deprecation
+// 1: nodemon ".\index.js" --trace-deprecation
 // 2: node "".\deploy-commands.js"
 // https://discordjs.guide/creating-your-bot/, https://github.com/FiredragonPlayz/discord.js-tutorials
 
