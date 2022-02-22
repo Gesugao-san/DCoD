@@ -1,7 +1,8 @@
 
 // node ".\index_web.js"
 // https://github.com/zekroTutorials/DiscordWebsocket
-// npm install discord.js express express-handlebars body-parser
+// npm i discord.js express express-handlebars body-parser nodemon
+// git update-index --assume-unchanged config_web.json
 // http://localhost:5665/?token=123456
 
 //const { Client } = require('discord.js');

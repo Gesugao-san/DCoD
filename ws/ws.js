@@ -12,10 +12,10 @@ const path = require('path');
 class WebSocket {
 
 	constructor(token, port, client) {
-		this.token = token
-		this.port = port
-		this.client = client
-		this.app = express()
+		this.token = token;
+		this.port = port;
+		this.client = client;
+		this.app = express();
 
 		// Register Handlebars instance as view engine
 		this.app.engine('hbs', hbs.engine({
@@ -24,20 +24,20 @@ class WebSocket {
 			layoutsDir: __dirname + '/layouts'  // Layouts directory -> layouts/
 		}))
 		// Set folder views/ as location for views files
-		this.app.set('views', path.join(__dirname, 'views'))
+		this.app.set('views', path.join(__dirname, 'views'));
 		// Set hbs as view engine
-		this.app.set('view engine', 'hbs')
+		this.app.set('view engine', 'hbs');
 		// Set public/ as public files root
-		this.app.use(express.static(path.join(__dirname, 'public')))
+		this.app.use(express.static(path.join(__dirname, 'public')));
 		// Register bodyParser as parser for Post requests body in JSON-format
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 		this.app.use(bodyParser.json());
 
-		this.registerRoots()
+		this.registerRoots();
 
 		// Start websocket on port defined in constructors arguments
 		this.server = this.app.listen(port, () => {
-			console.log("Websocket API set up at port " + this.server.address().port)
+			console.log("Websocket API set up at port " + this.server.address().port);
 		})
 	}
 
@@ -48,7 +48,7 @@ class WebSocket {
 	 * @returns {boolean} True if token is the same
 	 */
 	checkToken(_token) {
-		return (_token == this.token)
+		return (_token == this.token);
 	}
 
 	/**
@@ -59,8 +59,8 @@ class WebSocket {
 			var _token = req.query.token;
 			if (!this.checkToken(_token)) {
 				// Render error view if token does not pass
-				res.render('error', { title: "ERROR" })
-				return
+				res.render('error', { title: "ERROR" });
+				return;
 			}
 
 			// Collect all text channels and put them into an
@@ -74,7 +74,7 @@ class WebSocket {
 					console.log(c.name);
 					chans.push({id: c.id, name: c.name});
 				});
-				chans.push({id: this.client.channels.cache.get("878637723848699944").id, name: this.client.channels.cache.get("878637723848699944").name})
+				chans.push({id: this.client.channels.cache.get("878637723848699944").id, name: this.client.channels.cache.get("878637723848699944").name});
 				/* client.guilds.cache
 					.forEach((guild) => {
 					console.log(guild.name);
@@ -86,19 +86,19 @@ class WebSocket {
 				title: "SECRET INTERFACE",
 				token: _token,
 				chans
-			})
-		})
+			});
+		});
 
 		this.app.post('/sendMessage', (req, res) => {
-			var _token = req.body.token
-			var channelid = req.body.channelid
-			var text = req.body.text
+			var _token = req.body.token;
+			var channelid = req.body.channelid;
+			var text = req.body.text;
 
 			if(!_token || !channelid || !text)
 				return res.sendStatus(400);
 
 			if (!this.checkToken(_token))
-				return res.sendStatus(401)
+				return res.sendStatus(401);
 
 			//var chan = this.client.guilds.first().channels.get(channelid)
 			var chan = this.client.channels.cache.get(channelid);
@@ -106,13 +106,13 @@ class WebSocket {
 			// catch post request and if token passes,
 			// send message into selected channel
 			if (chan) {
-				chan.send(text)
-				res.sendStatus(200)
+				chan.send(text);
+				res.sendStatus(200);
 			} else
-				res.sendStatus(406)
+				res.sendStatus(406);
 		})
 	}
 
 }
 
-module.exports = WebSocket
+module.exports = WebSocket;
