@@ -66,27 +66,22 @@ class WebSocket {
 			// Collect all text channels and put them into an
 			// array as object { id, name }
 			var chans = [];
-			console.log("channels searched...");
-			this.client.guilds.cache //this.client.guilds.first().channels
-				.filter((c) => c.type === 'text') // && c.topic === 'volturnbot')
-				//.array()
-				.forEach((c) => {
-					console.log(c.name);
-					chans.push({id: c.id, name: c.name});
+			console.log("guilds searched...");
+			// https://stackoverflow.com/a/63847950/8175291
+			this.client.guilds.cache.map(guild => guild)
+					.forEach((guild) => {
+					console.log(guild.id, guild.name);
+					chans.push({id: guild.id, name: guild.name, icon: guild.iconURL()});
 				});
-				chans.push({
+				/* chans.push({
 					//id: this.client.channels.cache.get("878637723848699944").id,
 					//id: this.guilds.get(client.config.guildId).id,
 					id: this.client.guilds.cache.map(guild => guild.id),
 					//name: this.client.channels.cache.get("878637723848699944").name
 					//name: this.guilds.get(client.config.guildId).name
 					name: this.client.guilds.cache.map(guild => guild.name)
-				});
-				/* client.guilds.cache
-					.forEach((guild) => {
-					console.log(guild.name);
 				}); */
-				console.log(chans);
+				//console.log(chans);
 
 			// Render index view and pass title, token
 			// and channels array

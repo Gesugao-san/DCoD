@@ -4,17 +4,20 @@
 --}}
 <iframe style="display: none" name="dummyframe" id="dummyframe"></iframe>
 
-<form action="/sendMessage" method="POST" target="dummyframe" >
-	{{!-- Pass token back to authenticate web request --}}
-	<input type="hidden" name="token" value="{{ token }}" />
-	{{!-- Channel selector --}}
-	<select name="channelid">
+<p>
+	<table border="1">
+		<caption>All Discord servers, where i'm present!</caption>
+		<tr>
+			<th>Icon</th>
+			<th>ID</th>
+			<th>Name</th>
+		</tr>
 		{{#each chans}}
-			<option value="{{this.id}}">{{this.name}}</option>
+		<tr id="{{this.id}}">
+			<td><img src="{{this.icon}}" alt="" style="border: inset;"></td>
+			<td>{{this.id}}</td>
+			<td>"{{this.name}}"</td>
+		</tr>
 		{{/each}}
-	</select>
-	{{!-- Message text input --}}
-	<input type="text" name="text" placeholder="TEXT">
-	{{!-- Send button --}}
-	<input type="submit" class="button" value="SEND">
-</form>
+	</table>
+</p>
