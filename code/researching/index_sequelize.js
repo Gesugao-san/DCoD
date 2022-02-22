@@ -1,5 +1,9 @@
 
-// nodemon ".\index_sequelize.js" --trace-deprecation
+// 1: npm i discord.js express express-handlebars body-parser nodemon sequelize sqlite3
+// 2: node ".\deploy-commands_sequelize.js"
+// 3: git update-index --assume-unchanged config_legacy.json
+// 4: insert token
+// 5: nodemon ".\index_sequelize.js" --trace-deprecation
 // https://discordjs.guide/sequelize/
 
 const Sequelize = require('sequelize');

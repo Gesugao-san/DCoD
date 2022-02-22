@@ -1,6 +1,9 @@
 
-// 1: nodemon ".\index.js" --trace-deprecation
-// 2: node "".\deploy-commands.js"
+// 1: npm i discord.js express express-handlebars body-parser nodemon sequelize sqlite3
+// 2: node ".\deploy-commands.js"
+// 3: git update-index --assume-unchanged config.json
+// 4: insert token
+// 5: nodemon ".\index_web.js" --trace-deprecation
 // https://discordjs.guide/creating-your-bot/, https://github.com/FiredragonPlayz/discord.js-tutorials
 
 // Require the necessary discord.js classes

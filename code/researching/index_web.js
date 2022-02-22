@@ -1,9 +1,11 @@
 
+// 1: npm i discord.js express express-handlebars body-parser nodemon sequelize sqlite3
+// 2: node ".\deploy-commands.js"
+// 3: git update-index --assume-unchanged config.json
+// 4: insert token
+// 5: nodemon ".\index_web.js" --trace-deprecation
+// 6: http://localhost:5665/?token=123456
 // https://github.com/zekroTutorials/DiscordWebsocket
-// npm i discord.js express express-handlebars body-parser nodemon sequelize sqlite3
-// git update-index --assume-unchanged config_web.json
-// nodemon ".\index_web.js"
-// http://localhost:5665/?token=123456
 
 //const { Client } = require('discord.js');
 const { Client, Collection, Intents } = require('discord.js');
