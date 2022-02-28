@@ -4,8 +4,8 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction, client) {
-		console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 		const command = client.commands.get(interaction.commandName);
+		console.log(`https://discord.com/channels/${interaction.guild.id}/${interaction.channel.id}: <@!${interaction.user.id}> triggered an interaction: ${interaction.commandName}`);
 
 		if (!command) return;
 

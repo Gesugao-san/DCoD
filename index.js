@@ -46,7 +46,7 @@ fs.readdir("./events/", (err, files) => {
 process.on('SIGINT', function() {
 	console.log("Caught interrupt signal."); //"Medical examination: Killed by сaughted interrupt signal."
 	client.user.setStatus("invisible");
-	client.guilds.forEach(guild => {
+	client.guilds.cache.forEach(guild => {
 		if (client.playerManager.get(guild)) client.playerManager.leave(guild);
 	});
 	process.exit();

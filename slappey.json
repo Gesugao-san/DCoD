@@ -1,0 +1,7 @@
+{
+  "name": "digital-cartographer",
+  "language": "javascript",
+  "manager": "npm",
+  "token": "123",
+  "prefix": "/"
+}
