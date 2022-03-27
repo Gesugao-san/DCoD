@@ -21,8 +21,8 @@ const code_invalid = 'this-is-invalid';
 async function check_guild_widget(id) {
 	process.stdout.write(`guild "${id}": `);
 	const response = await fetch(`https://discord.com/api/guilds/${id}/widget.json`);
-	if (response.status != 200) { // Error: 429, Too Many Requests
-		console.log(`Error: ${response.status}, ${response.statusText}`);
+	if (!response.ok) { // Error: 429, Too Many Requests
+		console.log(`Error ${response.status}, ${response.statusText}`);
 		process.exit();
 	}
 	const json = await response.json();
@@ -42,18 +42,17 @@ async function check_guild_widget(id) {
 async function check_invite(code) {
 	process.stdout.write(`invite "${code}": `);
 	const response = await fetch(`https://discord.com/api/invite/${code}`);
-	if (response.status != 200) { // Error: 429, Too Many Requests
-		console.log(`Error: ${response.status}, ${response.statusText}`);
+	if (!response.ok) { // Error: 429, Too Many Requests
+		console.log(`Error ${response.status}, ${response.statusText}`);
 		process.exit();
 	}
 	const json = await response.json();
 	if (json.message === 'Unknown Invite') {
 		console.log(`invalid`);
 		return;
-	} else {
-		process.stdout.write(`valid, `);
-		await check_guild_widget(json.guild.id);
 	}
+	process.stdout.write(`valid, inviter: ${json.inviter.id || false}, `);
+	await check_guild_widget(json.guild.id);
 }
 
 
