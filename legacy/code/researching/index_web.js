@@ -9,11 +9,11 @@
 
 //const { Client } = require('discord.js');
 const { Client, Collection, Intents } = require('discord.js');
-const WS = require('./ws/ws');
+const WS = require('./../../ws/ws');
 var hbs = require('express-handlebars');
 
 // load config.json
-const config = require('./config_web.json');
+const config = require('./../../config.json');
 
 // Create Discord Bot Client
 //var client = new Client();

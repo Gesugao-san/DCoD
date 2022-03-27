@@ -28,7 +28,11 @@
   },
   "dependencies": {
     "discord.js": "^13.6.0",
-    "puppeteer": "^13.5.1"
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^13.5.1",
+    "ws": "^8.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
